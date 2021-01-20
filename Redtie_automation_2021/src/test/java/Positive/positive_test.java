@@ -3,7 +3,7 @@ package Positive;
 import org.testng.annotations.Test;
 
 import Browsers.Browser_Actions;
-import Browsers.Send_message;
+import Main.Send_message;
 import Main.loginpage;
 
 public class positive_test extends Browser_Actions  {
