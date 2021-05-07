@@ -1,5 +1,7 @@
 package Main;
 
+import java.util.Random;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,14 +13,15 @@ import Browsers.Browser_Actions;
 
 public class loginpage extends Browser_Actions {
 	
-	@FindBy(how=How.XPATH,using="//*[@id=\"root\"]/div/div/div/div/div/div[2]/div/div[2]/div/div[2]/div/span/a")
-	WebElement Signin_button;
+	
 	
 	@FindBy(how=How.XPATH,using="//*[@id=\"root\"]/div/div/div/div/div/div[2]/div/div[2]/div/div[3]/form/div[1]/input")
 	WebElement mailtextbox;
 
+	
 	@FindBy(how=How.XPATH,using="//*[@id=\"root\"]/div/div/div/div/div/div[2]/div/div[2]/div/div[3]/form/div[2]/input")
-	WebElement password_textbox;
+	WebElement passwordtextbox;
+
 	
 	@FindBy(how=How.XPATH,using="//*[@id=\"root\"]/div/div/div/div/div/div[2]/div/div[2]/div/div[3]/form/div[4]/button")
 	WebElement Login_button;
@@ -29,57 +32,41 @@ public class loginpage extends Browser_Actions {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void login_test_positive(String Mail_textbox,String Password_textbox)
+	public void login_test_positive(String Mail_textbox, String password_textbox)
 	{
-		try
-		{
-			Boolean dis=Signin_button.isDisplayed();
-			Assert.assertTrue(dis);
-			System.out.println("Signin_button is displayed");
-			try
-			{
-				Boolean ena=Signin_button.isDisplayed();
-				Assert.assertTrue(ena);
-				System.out.println("Signin_button is enabled");
-				Signin_button.click();
-			}
-			catch(Exception e)
-			{
-				System.out.println("Signin_button is enabled");
-
-			}
-		}
-		catch(Exception e)
-		{
-			System.out.println("Signin_button is not displayed");
-
-		}
-		
 		
 		try
 		{
 			Boolean dis=mailtextbox.isDisplayed();
 		    Assert.assertTrue(dis);
-		    System.out.println("mailtextbox");
+		    System.out.println("mailtextbox is displayed");
 		    
 		    
 		    try
 		    {
 		    	Boolean ena=mailtextbox.isEnabled();
 		    	Assert.assertTrue(ena);
-		    	//System.out.println(true);
+			    System.out.println("mailtextbox is enabled");
 		    	String N =mailtextbox.getAttribute("value");
 		    	if(N.isEmpty())
 		    	{
 		    		Thread.sleep(2000);
 		    		mailtextbox.clear();
-                    mailtextbox.sendKeys("saravanabalaji@blemediasolutions.com");
-                    
+		    		
+                    mailtextbox.sendKeys("saravanabalaji+qa@blemediasolutions.com");
+
+//		    		
+//                    Random randomgenerator= new Random ();
+//                    int ran = randomgenerator.nextInt(1000);
+//                    mailtextbox.sendKeys("saravanabalaji"+ran+"@blemediasolutions.com");
+		    		
 		    	}
 		    	else
 		    	{
 		    		Thread.sleep(2000);
-                    mailtextbox.sendKeys("saravanabalaji@blemediasolutions.com");
+		    		mailtextbox.click();
+                    
+                    mailtextbox.sendKeys("saravanabalaji+qa@blemediasolutions.com");
 
 		    	}
 		    }
@@ -95,47 +82,59 @@ public class loginpage extends Browser_Actions {
 
 		}
 	
-		try	  
-		{
-			Boolean dis=password_textbox.isDisplayed();
-			Assert.assertTrue(dis);
-			System.out.println("password textbox is displayed");
+// password textbox
 	
-			try
-			{
-            Boolean ena=password_textbox.isEnabled();				
-            Assert.assertTrue(ena);
-            System.out.println("password textbox is enabled");
-            String M=password_textbox.getAttribute("value");
-            if(M.isEmpty())
-            {
-	    		Thread.sleep(2000);
-            	password_textbox.clear();
-                password_textbox.sendKeys("Saro1045@");
-            }
-            else
-            {
-	    		Thread.sleep(2000);
-                password_textbox.sendKeys("Saro1045@");
+		try
+		{
+			Boolean dis=passwordtextbox.isDisplayed();
+		    Assert.assertTrue(dis);
+		    System.out.println("passwordtextbox is displayed");
+		    
+		    
+		    try
+		    {
+		    	Boolean ena=passwordtextbox.isEnabled();
+		    	Assert.assertTrue(ena);
+			    System.out.println("passwordtextbox is enabled");
 
-            }
-            
-			}
-			catch(Exception e)
-			{
-				
-	            System.out.println("password textbox is not enabled");
+		    	String N =passwordtextbox.getAttribute("value");
+		    	if(N.isEmpty())
+		    	{
+		    		Thread.sleep(2000);
+		    		passwordtextbox.clear();
+		    		
+		    		passwordtextbox.sendKeys("Saro1045@");
+
+                    
+		    		
+		    	}
+		    	else
+		    	{
+		    		Thread.sleep(2000);
+		    		passwordtextbox.click();
+                    
+		    		passwordtextbox.sendKeys("Saro1045@");
+
+		    	}
+		    }
+		    	catch(Exception e)
+				{
+		    		System.out.println("passwordtextbox is not enabled");
 
 				}
-			
-		}
+		    }
 		catch(Exception e)
 		{
-			System.out.println("password textbox is not displayed");
+    		System.out.println("passwordtextbox is not displayed");
 
 		}
 		
-	
+		
+		
+		
+		
+//login button		
+		
 	try
 	{
 		Boolean dis=Login_button.isDisplayed();
